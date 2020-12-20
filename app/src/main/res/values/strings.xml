@@ -16,6 +16,7 @@
     <string name="menu_paste">Paste</string>
 
     <string name="button_ok">OK</string>
+    <string name="button_modify">modify</string>>
     <string name="text_title">Title:</string>
 
     <string name="resolve_edit">Edit note</string>

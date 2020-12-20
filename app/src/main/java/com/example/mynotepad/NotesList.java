@@ -93,7 +93,7 @@ public class NotesList extends AppCompatActivity implements LoaderManager.Loader
      private Cursor updatecursor;
      private Toolbar toolbar;
      private DrawerLayout drawerLayout;
-     private NavigationView navigationView;
+   //  private NavigationView navigationView;
      private Cursor tagCursor;
      //tag select applied in NavigationItemSelected
      private String tagSelection;
@@ -117,92 +117,7 @@ public class NotesList extends AppCompatActivity implements LoaderManager.Loader
             }
         });
         //navigation view settings
-        navigationView=findViewById(R.id.nv);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.notepad:
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                null,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("MyNotePad");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                    case R.id.travel:
-                        tagSelection=NotePad.Notes.COLUMN_TAG_SELECTION_INDEX+" = 'Travel'";
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                tagSelection,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("Travel");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                    case R.id.work:
-                        tagSelection=NotePad.Notes.COLUMN_TAG_SELECTION_INDEX+" = 'Work'";
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                tagSelection,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("Work");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                    case R.id.study:
-                        tagSelection=NotePad.Notes.COLUMN_TAG_SELECTION_INDEX+" = 'Study'";
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                tagSelection,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("Study");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                    case R.id.life:
-                        tagSelection=NotePad.Notes.COLUMN_TAG_SELECTION_INDEX+" = 'Life'";
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                tagSelection,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("Life");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                    case R.id.def:
-                        tagSelection=NotePad.Notes.COLUMN_TAG_SELECTION_INDEX+" = 'Default'";
-                        tagCursor = getContentResolver().query(
-                                getIntent().getData(),            // Use the default content URI for the provider.
-                                PROJECTION,                       // Return the note ID and title for each note.
-                                tagSelection,                             // No where clause, return all records.
-                                null,                             // No where clause, therefore no where column values.
-                                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
-                        );
-                        adapter.swapCursor(tagCursor);
-                        toolbar.setTitle("Default");
-                        drawerLayout.closeDrawer(navigationView);
-                        break;
-                }
-                return true;
-            }
-        });
+
         SearchView();
         searchView.clearFocus();
 
@@ -310,7 +225,7 @@ public class NotesList extends AppCompatActivity implements LoaderManager.Loader
     private void SearchView(){
         searchView=findViewById(R.id.sv);
         searchView.onActionViewExpanded();
-        searchView.setQueryHint("搜索笔记");
+        searchView.setQueryHint("请输入查找内容");
         searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -394,16 +309,14 @@ public class NotesList extends AppCompatActivity implements LoaderManager.Loader
         ClipboardManager clipboard = (ClipboardManager)
                 getSystemService(Context.CLIPBOARD_SERVICE);
 
-
-        MenuItem mPasteItem = menu.findItem(R.id.menu_paste);
+    //    MenuItem mPasteItem = menu.findItem(R.id.menu_paste);
 
         // If the clipboard contains an item, enables the Paste option on the menu.
-        if (clipboard.hasPrimaryClip()) {
-            mPasteItem.setEnabled(true);
-        } else {
-            // If the clipboard is empty, disables the menu's Paste option.
-            mPasteItem.setEnabled(false);
-        }
+     //   if (clipboard.hasPrimaryClip()) {
+    //        mPasteItem.setEnabled(true);
+   //     } else {
+    //       // If the clipboard is empty, disables the menu's Paste option.
+    //    }
 
         // Gets the number of notes currently being displayed.
         final boolean haveItems = listView.getCount() > 0;
@@ -489,14 +402,7 @@ public class NotesList extends AppCompatActivity implements LoaderManager.Loader
            */
            startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
            return true;
-        case R.id.menu_paste:
-          /*
-           * Launches a new Activity using an Intent. The intent filter for the Activity
-           * has to have action ACTION_PASTE. No category is set, so DEFAULT is assumed.
-           * In effect, this starts the NoteEditor Activity in NotePad.
-           */
-          startActivity(new Intent(Intent.ACTION_PASTE, getIntent().getData()));
-          return true;
+
         default:
             return super.onOptionsItemSelected(item);
         }

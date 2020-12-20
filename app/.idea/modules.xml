@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2057635908/MyNotePad-1.0.iml" filepath="$PROJECT_DIR$/.idea/modules/2057635908/MyNotePad-1.0.iml" group="MyNotePad-1.0" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="MyNotePad-1.0/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/249962770/WJYNotepad.iml" filepath="$PROJECT_DIR$/.idea/modules/249962770/WJYNotepad.iml" group="WJYNotepad" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="WJYNotepad/app" />
     </modules>
   </component>
 </project>

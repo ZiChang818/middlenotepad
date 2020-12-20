@@ -21,28 +21,25 @@
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="match_parent"
+        android:layout_width="430dp"
         android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_margin="0dp"
+        android:layout_weight="1"
         android:gravity="center_vertical"
         android:paddingLeft="10dip"
         android:singleLine="true"
-        android:layout_weight="1"
-        android:layout_margin="0dp"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/text2"
-        android:layout_width="match_parent"
+        android:layout_width="433dp"
         android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="12dp"
+        android:layout_margin="0dp"
+        android:layout_weight="1"
         android:gravity="center_vertical"
         android:paddingLeft="10dip"
-        android:singleLine="true"
-        android:layout_weight="1"
-        android:layout_margin="0dp"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="12dp" />
 
 </LinearLayout>
 

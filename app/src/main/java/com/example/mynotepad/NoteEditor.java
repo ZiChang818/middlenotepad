@@ -145,15 +145,7 @@ public class NoteEditor extends AppCompatActivity {
                     colorText="#FF8C00";
                 }
                 break;
-            case R.id.chocolate:
-                if(isFlag){
-                    mText.setBackgroundColor(Color.parseColor("#D2691E"));
-                    colorBack="#D2691E";
-                }else{
-                    mText.setTextColor(Color.parseColor("#D2691E"));
-                    colorText="#D2691E";
-                }
-                break;
+
             case R.id.aqua:
                 if(isFlag){
                     mText.setBackgroundColor(Color.parseColor("#00FFFF"));
@@ -170,15 +162,6 @@ public class NoteEditor extends AppCompatActivity {
                 }else{
                     mText.setTextColor(Color.parseColor("#696969"));
                     colorText="#696969";
-                }
-                break;
-            case R.id.pink:
-                if(isFlag){
-                    mText.setBackgroundColor(Color.parseColor("#D81B60"));
-                    colorBack="#D81B60";
-                }else{
-                    mText.setTextColor(Color.parseColor("#D81B60"));
-                    colorText="#D81B60";
                 }
                 break;
             case R.id.green:
@@ -326,8 +309,8 @@ public class NoteEditor extends AppCompatActivity {
         if (savedInstanceState != null) {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
         }
-        textView=findViewById(R.id.etv);
-        button=findViewById(R.id.eb);
+      //  textView=findViewById(R.id.etv);
+     //   button=findViewById(R.id.eb);
         dateButton=findViewById(R.id.dateButtom);
         dateButton.setVisibility(View.GONE);
     }
@@ -401,8 +384,6 @@ public class NoteEditor extends AppCompatActivity {
                 }
                 int colModifyDate=mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE);
                 String date=mCursor.getString(colModifyDate);
-                textView.setText(date);
-                button.setText(items[checkItem]);
                 colorBack=mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_BACKGROUND_COLOR));
                 colorText=mCursor.getString(mCursor.getColumnIndex(NotePad.Notes.COLUMN_TEXT_COLOR));
                 if(!"null".equals(colorBack)&&colorBack!=null){
@@ -430,11 +411,6 @@ public class NoteEditor extends AppCompatActivity {
                         break;
                     }
                 }
-                button.setText(items[checkItem]);
-                Date nowTime = new Date(System.currentTimeMillis());
-                SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String retStrFormatNowDate = sdFormatter.format(nowTime);
-                textView.setText(retStrFormatNowDate);
             }
 
             /*
@@ -798,9 +774,6 @@ public class NoteEditor extends AppCompatActivity {
             case R.id.insert_album:
                  getPhoto();
                  break;
-            case R.id.insert_camera:
-                takeCamera();
-                break;
             case R.id.background_color:
                 isFlag=true;
                 showColor();
@@ -809,12 +782,7 @@ public class NoteEditor extends AppCompatActivity {
                 isFlag=false;
                 showColor();
                 break;
-            case R.id.set_date:
-                createDateDialog();
-                break;
-            case R.id.set_time:
-                createTimeDialog();
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -842,84 +810,6 @@ public class NoteEditor extends AppCompatActivity {
             AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
         }
-    }
-    private void createDateDialog(){
-        final Calendar calendar=Calendar.getInstance();
-        DatePickerDialog dialog = new DatePickerDialog(this, AlertDialog.THEME_HOLO_DARK,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date=year+"-"+(month+1)+"-"+dayOfMonth;
-                        if(time!=null){
-                            dateButton.setText(date+time);
-                        }else{
-                            String text=calendar.get(Calendar.HOUR_OF_DAY)+":"+(calendar.get(Calendar.MINUTE)+5);
-                            time=" "+text;
-                            dateButton.setText(date+" "+text);
-                        }
-
-                        dateButton.setVisibility(View.VISIBLE);
-                    }
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH));
-        dialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
-        dialog.setTitle("选择日期：");
-        dialog.show();
-    }
-    private void createTimeDialog(){
-        final Calendar calendar=Calendar.getInstance();
-        TimePickerDialog dialog=new TimePickerDialog(this, AlertDialog.THEME_HOLO_DARK,new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String text=calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.DAY_OF_MONTH);
-                if(text.equals(date)||date==null){
-                    if(hourOfDay<=calendar.get(Calendar.HOUR_OF_DAY))
-                        if(minute-5<=calendar.get(Calendar.MINUTE)){
-                            time=" "+calendar.get(Calendar.HOUR_OF_DAY)+":"+(calendar.get(Calendar.MINUTE)+5);
-                        }
-                        else{
-                            time=" "+calendar.get(Calendar.HOUR_OF_DAY)+":"+minute;
-                        }
-                    else{
-                        time=" "+hourOfDay+":"+minute;
-                    }
-                }else{
-                    time=" "+hourOfDay+":"+minute;
-                }
-                if(date!=null){
-                    dateButton.setText(date+time);
-                }else{
-                    date=text;
-                    dateButton.setText(text+time);
-                }
-                dateButton.setVisibility(View.VISIBLE);
-            }
-        },
-                calendar.get(Calendar.HOUR_OF_DAY),
-                calendar.get(Calendar.MINUTE), true);
-        dialog.setTitle("选择时间：");
-
-        dialog.show();
-    }
-    public void dateClick(View view){
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setMessage("请确认是否删除提醒时间：").setPositiveButton("确认", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                date=null;
-                time=null;
-                dateButton.setVisibility(View.GONE);
-                dialog.dismiss();
-            }
-        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.create().show();
     }
 
 //BEGIN_INCLUDE(paste)
@@ -1002,7 +892,7 @@ public class NoteEditor extends AppCompatActivity {
         // Sets up a map to contain values to be updated in the provider.
         ContentValues values = new ContentValues();
         values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, retStrFormatNowDate);
-        values.put(NotePad.Notes.COLUMN_TAG_SELECTION_INDEX,items[checkItem]);
+      //  values.put(NotePad.Notes.COLUMN_TAG_SELECTION_INDEX,items[checkItem]);
         values.put(NotePad.Notes.COLUMN_BACKGROUND_COLOR,colorBack);
         values.put(NotePad.Notes.COLUMN_TEXT_COLOR,colorText);
 
