@@ -58,8 +58,8 @@
 
    运行效果：
 
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/modifytime1.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/modifytime2.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/modifytime1.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/modifytime2.png)
 
 2. 搜索功能的实现
 
@@ -125,8 +125,8 @@
    ```
 
    运行效果：
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/search1.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/search2.png)
+   ![image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/search1.png)
+   ![image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/search2.png)
 
    
 
@@ -183,11 +183,11 @@
    ```
 
    运行效果显示：
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/ui1.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/ui2.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/colormenu1.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/colorchose.png)
-   [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/color3.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/ui1.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/ui2.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/colormenu1.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/colorchose.png)
+   ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/color3.png)
    
 
    4.实现插入图片的功能
@@ -316,8 +316,8 @@
    ```
 
    运行效果：
-  [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo1.png)
-  [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo2.png)
-  [!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo3.png)
+  ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo1.png)
+  ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo2.png)
+  ![!image](https://github.com/ZiChang818/middlenotepad/blob/master/photo/photo3.png)
    
 
